@@ -13,12 +13,14 @@ export default function SearchTextBox({value, setValue,handleClick}) {
                  value={value}
                  />
                  
-                 <RxCross2  className={` ${value.trim().length>0?'':'hidden'} text-3xl text-gray-500 cursor-pointer sm:mr-2 border-r-2 pr-2 hover:text-red-400`} 
+                 <RxCross2  className={` ${value.trim().length>0?'':'hidden'} text-3xl text-gray-500 
+                 cursor-pointer sm:mr-2 border-r-2 pr-2 hover:text-red-400 hover:scale-125 transition-transform duration-200 ease-out`} 
                  onClick={()=>setValue("")} 
                  
                  />
                  
-                 <AiOutlineSearch className={` ${value.trim().length>0?'':'hidden'} text-2xl mr-2  text-gray-500 cursor-pointer hover:text-blue-700 hover:transition-shadow `}   
+                 <AiOutlineSearch className={` ${value.trim().length>0?'':'hidden'} text-2xl mr-2  text-gray-500 
+                 cursor-pointer hover:text-blue-700 hover:transition-shadow hover:scale-125 transition-transform duration-200 ease-out`}   
                  disabled={true}
                  onClick={()=>handleClick()}
                  

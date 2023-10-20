@@ -1,9 +1,10 @@
 "use client"
 import Image from 'next/image'
 
-import {AiOutlineSearch} from 'react-icons/ai'
 import SearchTextBox from '@/components/SearchTextBox'
 import {useState} from 'react'
+import {AiFillHome,AiOutlinePlusCircle} from 'react-icons/ai'
+
 
 export default function Header() {
   const [searchTerm, setSearchTerm]  = useState("")
@@ -12,7 +13,8 @@ export default function Header() {
   }
   return (
    
-        <div className="flex items-center justify-between  w-full pl-0 sm:pl-[5%] sm:pr-[5%] md:pl-[10%] md:pr-[10%] lg:pl-[20%] :pr-[20%]">
+        // <div className="flex mx-4 items-center justify-between  w-full pl-0 sm:pl-[5%] sm:pr-[5%] md:pl-[10%] md:pr-[10%] lg:pl-[20%] :pr-[20%]">
+        <div className="flex mx-4 xl:mx-auto items-center justify-between  max-w-6xl ">
          {/* Left */}
             <div className="flex flex-row ml-2 ">
                     <div className="h-24 w-24 relative hidden lg:inline-grid cursor-pointer">
@@ -49,10 +51,12 @@ export default function Header() {
            
 
              {/* Right */}
-             <div className="pr-2">
-             <h1 className=''>Right Side</h1>
+             <div className="flex flex-row space-x-4 justify-center items-center">
+                <AiFillHome className='hidden md:inline-flex text-xl hover:text-red-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
+                <AiOutlinePlusCircle className='text-xl hover:text-blue-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
+                <img src='/user_logo.png' className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'/>
              </div>
-             
+            
        </div>
 
         
