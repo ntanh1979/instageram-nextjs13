@@ -10,3 +10,12 @@ npx create-next-app@13.1.6 insta-nextjs
 --- install tailwindcss
 
 https://tailwindcss.com/docs/guides/nextjs
+
+
+--- install icon--
+npm install react-icons --save
+
+-- install  tailwindcss-forms
+https://github.com/tailwindlabs/tailwindcss-forms
+
+npm install -D @tailwindcss/forms
