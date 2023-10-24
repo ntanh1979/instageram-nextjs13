@@ -47,7 +47,9 @@ export default function Header() {
                             <div className="flex flex-row space-x-4 justify-center items-center">
                                 <AiFillHome className='hidden md:inline-flex text-xl hover:text-red-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
                                 <AiOutlinePlusCircle className='text-xl hover:text-blue-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
-                                <img src='/user_logo.png' className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'/>
+                                {/* <img src='/user_logo.png' className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'/> */}
+                                <img src={`https://i.pravatar.cc/150?img=${Math.ceil(Math.random()*70)}`} className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'/>
+                                
                             </div>
                             
                     </div>
