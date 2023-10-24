@@ -24,3 +24,7 @@ npm install -D @tailwindcss/forms
 
 https://www.npmjs.com/package/minifaker
 npm i minifaker
+
+-- install https://www.npmjs.com/package/tailwind-scrollbar
+
+npm i tailwind-scrollbar
