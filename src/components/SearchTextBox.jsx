@@ -19,7 +19,7 @@ export default function SearchTextBox({value, setValue,handleClick}) {
                  
                  />
                  
-                 <AiOutlineSearch className={` ${value.trim().length>0?'':'hidden'} text-2xl mr-2  text-gray-500 
+                 <AiOutlineSearch className={` ${value.trim().length>0?'':'hidden'} text-2xl mr-2  text-gray-500 ml-2
                  cursor-pointer hover:text-blue-700 hover:transition-shadow hover:scale-125 transition-transform duration-200 ease-out`}   
                  disabled={true}
                  onClick={()=>handleClick()}
