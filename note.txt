@@ -28,3 +28,28 @@ npm i minifaker
 -- install https://www.npmjs.com/package/tailwind-scrollbar
 
 npm i tailwind-scrollbar
+
+--session 50 :
+-- install next-auth
+
+https://next-auth.js.org/
+
+npm install next-auth
+
+-- setup firebase
+https://console.firebase.google.com/?fb_gclid=CjwKCAjw-eKpBhAbEiwAqFL0mo5aLkn7nz4eGvDcmgaAIgacmyOGqsgX7FMMT54ROcCFKmRh2MOsYxoCojEQAvD_BwE&_gl=1*qbhta8*_ga*MzcwMzQzNTgwLjE2OTgyOTI0MjM.*_ga_CW55HF8NVT*MTY5ODI5MjQyMy4xLjAuMTY5ODI5MjQyMy42MC4wLjA.&pli=1
+
+Goto 
+https://console.firebase.google.com/project/insta-v4-14649/authentication/providers
+-> Enable Sign In Provider -> Google
+
+--install firebase
+npm install firebase
+
+https://cloud.google.com/?hl=en
+
+Goto url below -> OAuth 2.0 Client IDs
+https://console.cloud.google.com/apis/credentials?hl=en&project=insta-v4-14649
+
+Client ID  = 863404275151-n2oksk2gpqf0gtqje0290djl0eksvgu6.apps.googleusercontent.com
+Client Secret = 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
