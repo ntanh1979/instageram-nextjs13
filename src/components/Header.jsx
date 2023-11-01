@@ -1,7 +1,8 @@
 "use client"
 import Image from 'next/image'
 
-import SearchTextBox from '@/components/SearchTextBox'
+import SearchTextBox from '../components/SearchTextBox'
+// '@/components/SearchTextBox'
 import {useState} from 'react'
 import {AiFillHome,AiOutlinePlusCircle} from 'react-icons/ai'
 
@@ -15,23 +16,23 @@ export default function Header() {
             <div className="shadow-sm border-b sticky top-0 bg-white z-30">
 
             
-                        <div className="flex mx-4 xl:mx-auto items-center justify-between  max-w-6xl ">
+                        <div className="flex  items-center justify-between  max-w-6xl mx-4 xl:mx-auto ">
                         {/* Left */}
-                            <div className="flex flex-row ml-2 ">
-                                    <div className="h-24 w-24 relative hidden lg:inline-grid cursor-pointer">
+                            <div className="flex flex-row ml-2 items-center">
+                                    <div className="h-24 w-24 relative hidden lg:inline-grid ">
                                         <Image 
                                             src={'/Instagram_logo.png'} 
                                             alt='logo'
-                                            layout='fill'
+                                            layout='fill'                                            
                                             className='object-contain'
                                             
                                         />
                                     </div>
-                                    <div className="h-24 w-10 relative  lg:hidden cursor-pointer">
+                                    <div className="h-24 w-10 relative  lg:hidden">
                                         <Image 
                                             src={'/Instagram_logo_mobile.svg'} 
                                             alt='logo'
-                                            layout='fill'
+                                             layout='fill'
                                             className='object-contain'
                                             
                                         />

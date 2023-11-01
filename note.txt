@@ -53,3 +53,18 @@ https://console.cloud.google.com/apis/credentials?hl=en&project=insta-v4-14649
 
 Client ID  = 863404275151-n2oksk2gpqf0gtqje0290djl0eksvgu6.apps.googleusercontent.com
 Client Secret = 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
+
+
+-- Guide line for next-auth and nextjs 13
+
+https://www.youtube.com/watch?v=6N3Rumo-c3s
+
+
+-- Xu ly phan Google authentication
++ Them : NODE_TLS_REJECT_UNAUTHORIZED=0 vao enviroment
++ Sua duong link 
+https://console.cloud.google.com/apis/credentials/oauthclient/863404275151-n2oksk2gpqf0gtqje0290djl0eksvgu6.apps.googleusercontent.com?hl=en&project=insta-v4-14649
+
+--> Authorized redirect URIs ->
+-- Nhap gia TypeScript
+http://localhost:3000/api/auth/callback/google

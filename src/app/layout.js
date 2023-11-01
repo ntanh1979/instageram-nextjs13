@@ -1,6 +1,7 @@
 import './globals.css'
 
 import Head from './head'
+import NextAuthProvider from './Providers'
 
 export default function RootLayout({ children }) {
   return (
@@ -10,7 +11,12 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <Head />
-      <body>{children}</body>
+      <body>
+          <NextAuthProvider>
+            {children}
+          </NextAuthProvider>
+          
+      </body>
     </html>
   )
 }
