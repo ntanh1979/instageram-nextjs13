@@ -5,12 +5,15 @@ import Header from '../../../components/Header'
 import { getProviders,signIn } from "next-auth/react"
 import {useState, useEffect} from 'react'
 
+import { useSession } from "next-auth/react"
 
 
 // import SigninButton from '../../../components/SigninButton'
 
 export default function SignInApp() {
    const [providers,setProvider] = useState(null)
+
+   
    
   //  get the provider list
   //---------------------------------------------------------------------------
@@ -23,6 +26,13 @@ export default function SignInApp() {
       setProviders()
    },[])
   //---------------------------------------------------------------------------
+  
+  const { data: session, status } = useSession()
+  // if (status === "authenticated") {
+  //   return <p>Signed in as {session.user.email}</p>
+  // }
+
+
   if(providers)   console.log(Object.values(providers))
 
   console.log(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)
