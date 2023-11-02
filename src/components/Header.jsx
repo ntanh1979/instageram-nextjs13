@@ -59,7 +59,7 @@ export default function Header() {
                                         <>
                                             <AiOutlinePlusCircle className='text-xl hover:text-blue-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
                                             {/* <img src='/user_logo.png' className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'/> */}
-                                            <img src={session.user.image} 
+                                            <img src={session?.user.image} 
                                             onClick={signOut}
                                             className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out p-[1.5px] border border-blue-300'/>
                                         </>
