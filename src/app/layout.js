@@ -2,6 +2,7 @@ import './globals.css'
 
 import Head from './head'
 import NextAuthProvider from './Providers'
+import RecoilContextProvider from "./recoilContextProvider";
 
 export default function RootLayout({ children }) {
   return (
@@ -13,7 +14,9 @@ export default function RootLayout({ children }) {
       <Head />
       <body>
           <NextAuthProvider>
-            {children}
+            <RecoilContextProvider>
+              {children}
+            </RecoilContextProvider>
           </NextAuthProvider>
           
       </body>

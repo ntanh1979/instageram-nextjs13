@@ -7,12 +7,16 @@ import SearchTextBox from '../components/SearchTextBox'
 import {useState} from 'react'
 import {AiFillHome,AiOutlinePlusCircle} from 'react-icons/ai'
 
+import {modalState} from '../atom/modalAtom'
+import {useRecoilState} from 'recoil'
 
 export default function Header() {
 
   const [searchTerm, setSearchTerm]  = useState("")
   const { data: session, status } = useSession()
-  console.log(session)
+//   console.log(session)
+
+  const [open,setOpen] = useRecoilState(modalState)
 
   const handleOnSearch = () =>{
     setSearchTerm("Click search")
@@ -57,7 +61,10 @@ export default function Header() {
                                     session ? 
                                     (
                                         <>
-                                            <AiOutlinePlusCircle className='text-xl hover:text-blue-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
+                                            <AiOutlinePlusCircle 
+                                            className='text-xl hover:text-blue-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' 
+                                            onClick={()=>setOpen(true)}
+                                            />
                                             {/* <img src='/user_logo.png' className='h-10 w-10 rounded-full  cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'/> */}
                                             <img src={session?.user.image} 
                                             onClick={signOut}

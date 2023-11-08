@@ -68,3 +68,15 @@ https://console.cloud.google.com/apis/credentials/oauthclient/863404275151-n2oks
 --> Authorized redirect URIs ->
 -- Nhap gia TypeScript
 http://localhost:3000/api/auth/callback/google
+
+--install recoiljs---
+
+https://recoiljs.org/
+
+npm install recoil
+
+Huong dan su dung recoil cho nextjs13
+https://stackoverflow.com/questions/76889857/integrating-recoilroot-in-next-js-using-next-js-13-app-router-approach-structu
+
+Ref Doc :
+https://blog.logrocket.com/next-js-13-app-router/
