@@ -80,3 +80,7 @@ https://stackoverflow.com/questions/76889857/integrating-recoilroot-in-next-js-u
 
 Ref Doc :
 https://blog.logrocket.com/next-js-13-app-router/
+
+55-install react-modal
+
+npm i react-modal
