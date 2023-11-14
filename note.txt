@@ -84,3 +84,13 @@ https://blog.logrocket.com/next-js-13-app-router/
 55-install react-modal
 
 npm i react-modal
+
+
+--57 : config db firebase
+
+--firestore db
+https://console.firebase.google.com/project/insta-v4-14649/authentication/providers
+
+install firebase
+
+npm i @firebase/firestore
