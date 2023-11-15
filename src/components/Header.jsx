@@ -8,6 +8,8 @@ import {useState} from 'react'
 import {AiFillHome,AiOutlinePlusCircle} from 'react-icons/ai'
 
 import {modalState} from '../atom/modalAtom'
+import { useRouter } from 'next/navigation'
+
 import {useRecoilState} from 'recoil'
 
 export default function Header() {
@@ -17,6 +19,7 @@ export default function Header() {
 //   console.log(session)
 
   const [open,setOpen] = useRecoilState(modalState)
+  const router = useRouter()
 
   const handleOnSearch = () =>{
     setSearchTerm("Click search")
@@ -28,12 +31,13 @@ export default function Header() {
                         <div className="flex  items-center justify-between  max-w-6xl mx-4 xl:mx-auto ">
                         {/* Left */}
                             <div className="flex flex-row ml-2 items-center">
-                                    <div className="h-24 w-24 relative hidden lg:inline-grid ">
+                                    <div className="h-24 w-24 relative hidden lg:inline-grid  cursor-pointer">
                                         <Image 
                                             src={'/Instagram_logo.png'} 
                                             alt='logo'
                                             layout='fill'                                            
                                             className='object-contain'
+                                            onClick={()=>router.push("/")}
                                             
                                         />
                                     </div>
@@ -43,7 +47,7 @@ export default function Header() {
                                             alt='logo'
                                              layout='fill'
                                             className='object-contain'
-                                            
+                                            onClick={()=>router.push("/")}
                                         />
                                     </div>  
                             </div> 
@@ -56,7 +60,9 @@ export default function Header() {
                             {/* Right */}
                        
                             <div className="flex flex-row space-x-4 justify-center items-center">
-                                <AiFillHome className='hidden md:inline-flex text-xl hover:text-red-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
+                                <AiFillHome className='hidden md:inline-flex text-xl hover:text-red-600 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' 
+                                onClick={()=>router.push("/")}
+                                />
                                 {
                                     session ? 
                                     (
