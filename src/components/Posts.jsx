@@ -13,8 +13,11 @@ export default function Posts() {
             setPosts(snapshot.docs)
           }
       )
+     
       return unsubscribe;
     },[db])
+
+ 
 
   return (
     <div>
@@ -27,7 +30,7 @@ export default function Posts() {
                 userImg= {post.data().profileImg}
                 img = {post.data().image}
                 caption = {post.data().caption}
-
+ 
              />   
         )
         )

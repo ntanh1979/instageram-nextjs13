@@ -1,31 +1,46 @@
 'use client'
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {BiDotsHorizontalRounded} from 'react-icons/bi'
 import {AiOutlineHeart} from 'react-icons/ai'
 import {BsBookmark,BsChatDots} from 'react-icons/bs'
 import {HiOutlineEmojiHappy} from 'react-icons/hi'
 
 import { useSession } from 'next-auth/react'
-import { addDoc, collection, serverTimestamp } from '@firebase/firestore'
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from '@firebase/firestore'
 import {db} from '../../firebase'
+
+import Moment from 'react-moment'
 
 export default function Post({id,username,img,userImg,caption}) {
 //    const [value,setValue]  =useState("")
    const { data: session } = useSession()
    const [comment,setComment] = useState("");
+   const [comments,setComments]=useState([]);
+
+   useEffect(()=>{
+    const unsubscribe = onSnapshot(
+       query(collection(db,"posts",id,"comments"),orderBy("timestamp","desc")),         
+        (snapshot) =>{
+            setComments(snapshot.docs)
+        }
+    )
+   
+    return unsubscribe;
+  },[db,id])
+
    
    async function sendComment(event) {
         event.preventDefault();
         const commentToSend = comment.trim();
         setComment("")
         await addDoc(collection(db,"posts",id,"comments"),
-        {
-            comment : commentToSend,
-            username : session.user.username,
-            userImage : session.user.image,
-            timestamp: serverTimestamp()
-        }
+            {
+                comment : commentToSend,
+                username : session.user.username,
+                userImage : session.user.image,
+                timestamp: serverTimestamp()
+            }
         )
    }
 
@@ -61,6 +76,29 @@ export default function Post({id,username,img,userImg,caption}) {
                 <span className='font-bold mr-2'>{username}</span>
                 {caption}
             </p>
+            {   comments.length >0 &&
+                (
+                    <div className="mx-10 max-h-24 overflow-y-scroll scrollbar-none">
+                        {
+                            comments.map((cmt)=>{
+                                return (
+                                <div className='flex items-center space-x-2 mb-2'>
+                                    <img src={cmt.data().userImage} alt="user-image" 
+                                    className='rounded-full h-7 object-cover' />
+                                    <p className='font-semibold'>{cmt.data().username}</p>
+                                    <p className='flex-1 truncate'>{cmt.data().comment}</p>
+                                    <Moment fromNow>{cmt.data().timestamp?.toDate()}</Moment>
+                                       
+                                </div>
+                                )
+                            })
+                        }    
+                    </div>
+                    
+                )
+                
+                
+            }
         {/* Post input box */}
         {
             session && (

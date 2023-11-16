@@ -94,3 +94,7 @@ https://console.firebase.google.com/project/insta-v4-14649/authentication/provid
 install firebase
 
 npm i @firebase/firestore
+
+-- 61 : install react moment
+
+npm i react-moment
