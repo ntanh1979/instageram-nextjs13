@@ -7,10 +7,27 @@ import {BsBookmark,BsChatDots} from 'react-icons/bs'
 import {HiOutlineEmojiHappy} from 'react-icons/hi'
 
 import { useSession } from 'next-auth/react'
+import { addDoc, collection, serverTimestamp } from '@firebase/firestore'
+import {db} from '../../firebase'
 
 export default function Post({id,username,img,userImg,caption}) {
-   const [value,setValue]  =useState("")
+//    const [value,setValue]  =useState("")
    const { data: session } = useSession()
+   const [comment,setComment] = useState("");
+   
+   async function sendComment(event) {
+        event.preventDefault();
+        const commentToSend = comment.trim();
+        setComment("")
+        await addDoc(collection(db,"posts",id,"comments"),
+        {
+            comment : commentToSend,
+            username : session.user.username,
+            userImage : session.user.image,
+            timestamp: serverTimestamp()
+        }
+        )
+   }
 
   return (
     <div className='bg-white my-7 border rounded-md'>
@@ -48,13 +65,17 @@ export default function Post({id,username,img,userImg,caption}) {
         {
             session && (
                 <form action="" className='flex items-center p-4'>
-                    <HiOutlineEmojiHappy className='' size={'1.5rem'} />
+                    <HiOutlineEmojiHappy className='pr-2' size={'1.5rem'} />
                     <input type="text"  className= 'flex-1 border-0  focus:focus:outline-none' 
                     placeholder='Enter your comment...' 
-                        onChange={(e)=>setValue(e.target.value)}
-                        value={value}
+                        onChange={(e)=>setComment(e.target.value)}
+                        value={comment}
                         />
-                    <button className='text-blue-400 cursor-pointer font-bold '>Post</button>
+                    <button className='text-blue-400 cursor-pointer font-bold  disabled:text-blue-200 disabled:cursor-not-allowed' 
+                     disabled={!comment.trim()}
+                     onClick={sendComment}
+                     type='submit'
+                    >Post</button>
                 </form>
             )
         }
