@@ -113,7 +113,17 @@ export default function Post({id,username,img,userImg,caption}) {
        
 
         {/* Post Comments */}
+        
+            
             <p className='p-5 truncate'>
+                {/* display number of likes */}
+            
+                {
+                    likes.length >0 &&
+                    (<p className='font-semibold'>
+                        {likes.length} like {(likes.length!==1) && ('s')}
+                    </p>) 
+                }
                 <span className='font-bold mr-2'>{username}</span>
                 {caption}
             </p>
