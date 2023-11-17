@@ -3,11 +3,14 @@
 import {useState, useEffect} from 'react'
 import {BiDotsHorizontalRounded} from 'react-icons/bi'
 import {AiOutlineHeart} from 'react-icons/ai'
+import { FaHeart } from "react-icons/fa";
+
+
 import {BsBookmark,BsChatDots} from 'react-icons/bs'
 import {HiOutlineEmojiHappy} from 'react-icons/hi'
 
 import { useSession } from 'next-auth/react'
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from '@firebase/firestore'
+import { addDoc, setDoc, collection, onSnapshot, orderBy, query, serverTimestamp, doc, deleteDoc } from '@firebase/firestore'
 import {db} from '../../firebase'
 
 import Moment from 'react-moment'
@@ -17,6 +20,8 @@ export default function Post({id,username,img,userImg,caption}) {
    const { data: session } = useSession()
    const [comment,setComment] = useState("");
    const [comments,setComments]=useState([]);
+   const [hasLiked, setHasLiked] = useState(false);
+    const [likes, setLikes] = useState([])
 
    useEffect(()=>{
     const unsubscribe = onSnapshot(
@@ -29,6 +34,25 @@ export default function Post({id,username,img,userImg,caption}) {
     return unsubscribe;
   },[db,id])
 
+  //---------------get likes------------------------------------------------
+  useEffect(()=>{
+    const unsubscribe = onSnapshot(
+        collection(db,"posts",id,"likes"),         
+         (snapshot) =>{
+             setLikes(snapshot.docs)
+         }
+     )
+    
+     return unsubscribe;
+  },[db])
+//   --------------------------------------------------------------
+  useEffect(()=>{
+    setHasLiked(
+        likes.findIndex(like=> like.id=== session?.user.uid) !==-1
+    )
+  },[likes])
+  
+  //   --------------------------------------------------------------
    
    async function sendComment(event) {
         event.preventDefault();
@@ -42,6 +66,17 @@ export default function Post({id,username,img,userImg,caption}) {
                 timestamp: serverTimestamp()
             }
         )
+   }
+
+   async function likePost(){
+        if(hasLiked) {
+            await deleteDoc(doc(db,"posts",id,"likes",session.user.uid))
+        } else
+        {
+            await setDoc(doc(db,"posts",id,"likes",session.user.uid),{
+                username: session.user.username
+            })        
+        }
    }
 
   return (
@@ -61,7 +96,13 @@ export default function Post({id,username,img,userImg,caption}) {
             session && (
                 <div className="flex items-center justify-between px-4 pt-4">
                 <div className="flex items-center space-x-4">
-                    <AiOutlineHeart className='btn' size={'1.5rem'} />
+                    {
+                        hasLiked?                        
+                        (<FaHeart onClick={likePost} className='btn text-red-500' size={'1.5rem'} />):
+                        (<AiOutlineHeart onClick={likePost} className='btn' size={'1.5rem'} />) 
+                    }
+                    
+                    
                     <BsChatDots className='btn' size={'1.5rem'}/>
                 </div>
                 <BsBookmark className='btn' size={'1.5rem'}/>
