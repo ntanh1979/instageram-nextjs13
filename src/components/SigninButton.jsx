@@ -1,8 +1,10 @@
 import Image from "next/image"
 
-export default function SigninButton() {
+export default function SigninButton({onClick}) {
   return (
-    <button className="flex items-center gap-4 shadow-sm rounded-lg pl-3 hover:scale-110 transition-transform duration-300">
+    <button className="flex items-center gap-4 shadow-sm rounded-lg pl-3 hover:scale-110 transition-transform duration-300 ease-out"
+    onClick={onClick}
+    >
       <Image src='/google-logo.png' height={30} width={30}/>
       <span className="bg-blue-500 text-white px-4 py-3">Sign in with Google</span>
     </button>

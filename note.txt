@@ -98,3 +98,23 @@ npm i @firebase/firestore
 -- 61 : install react moment
 
 npm i react-moment
+
+
+--Final:
+
+
+   // xu ly sign on OK and show message
+   async function onGoogleClick() {
+    await signIn('google')
+   } 
+
+   useEffect(() => {
+    if (session?.user.username) {
+      console.log(session)
+      toast.success("You have successfully logged in!")
+      setTimeout(()=>{
+        router.push("/")
+      }, 800)
+    }
+    
+  }, [session?.user.username])

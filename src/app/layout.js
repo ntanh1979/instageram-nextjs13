@@ -4,6 +4,9 @@ import Head from './head'
 import NextAuthProvider from './Providers'
 import RecoilContextProvider from "./recoilContextProvider";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -16,6 +19,7 @@ export default function RootLayout({ children }) {
           <NextAuthProvider>
             <RecoilContextProvider>
               {children}
+              <ToastContainer />
             </RecoilContextProvider>
           </NextAuthProvider>
           
